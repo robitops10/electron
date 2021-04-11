@@ -1,0 +1,19 @@
+{
+  "name": "Electron",
+  "version": "1.0.0",
+  "description": "Our First Electron App",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --exec electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@types/electron": "^1.6.10",
+    "electron": "^12.0.2",
+    "marked": "^2.0.2"
+  }
+}
