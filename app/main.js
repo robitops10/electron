@@ -14,6 +14,7 @@ app.on('ready', catchAsync( async () => {
 			contextIsolation: false,
 		}
 	});
+	mainWindow.webContents.openDevTools()
 
 	const success = await mainWindow.loadFile('app/index.html');
 	console.log( success )
@@ -21,7 +22,13 @@ app.on('ready', catchAsync( async () => {
 	mainWindow.on('closed', () => {
 		mainWindow = null;
 	});
+
 }));
+
+// app.on('before-quit', (event) => {
+// 	event.preventDefaut();
+// 	console.log('Waiting to save file')
+// })
 
 
 process.on( 'uncaughtException', err => {

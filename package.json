@@ -5,7 +5,8 @@
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "nodemon --exec electron ."
+    "dev": "nodemon --exec electron .",
+    "reset" : "git reset --hard"
   },
   "keywords": [],
   "author": "",
