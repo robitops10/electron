@@ -5,6 +5,11 @@
 // 	alert('ok');
 // })
 
-const $ = s => document.querySelector($);
 
-console.log( $('.cll'))
+
+const received = 500;
+const total = 42349;
+
+const data = Math.round( (received / total)  )
+
+console.log( data  )
