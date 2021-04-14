@@ -1,4 +1,4 @@
-const { app, BrowserWindow, webContents, session } = require('electron');
+const { app, BrowserWindow, webContents, session, dialog } = require('electron');
 const windowStateKeeper = require('electron-window-state');
 
 // not working
@@ -47,8 +47,7 @@ const readyHandler = catchAsync(async () => {
 	// windowState.manage(mainWindow);
 	// mainWindow.loadURL('https://httpbin.org/basic-auth/user/passwd');
 	// childWindow = new BrowserWindow(childWindowOptions);
-
-
+/*
 	const sec = session.defaultSession;
 	sec.on('will-download', (e, downloadItem, webContents) => {
 
@@ -67,18 +66,60 @@ const readyHandler = catchAsync(async () => {
 				webContents.executeJavaScript(`window.progress.value = ${progress}`)
 			}
 		})
+	});
+
+*/
 
 
-	})
+
+	mainWindow.webContents.on('did-finish-load', catchAsync( async () => {
+
+	// const data =	await dialog.showOpenDialog(mainWindow, {
+	// 		title: 'Photo Dialog', 																		// Show Title on the Window
+	// 		buttonLabel: 'Select a Photo', 														// Value of Button Default 'Open'
+	// 		// defaultPath: app.getPath('home'), 												// Default 'current Directory'
+	// 		properties: ['openFile', 'multiSelections'],
+	// 		filters: [ 																								// Only allow bellow file types
+	// 			{ name: 'image', extensions: ['jpg', 'jpeg', 'png'] }	 	// 'name' will show file type Level
+	// 		]
+	// 	});
+	// console.log( data ) 																					// Promise of { canceled: false, filePaths: ['...'] }
+
+
+	
+	// const data =	await dialog.showSaveDialog(mainWindow, {
+	// 		title: 'Save Dialog', 																		// Show Title on the Window
+	// 		// buttonLabel: 'Select a Photo', 														// Value of Button Default 'Open'
+	// 		// defaultPath: app.getPath('home'), 												// Default 'current Directory'
+	// 		// properties: ['showHiddenFiles'],
+	// 		// filters: [ 																								// Only allow bellow file types
+	// 		// 	{ name: 'image', extensions: ['jpg', 'jpeg', 'png'] }	 	// 'name' will show file type Level
+	// 		// ]
+	// 	});
+	// console.log( data ) 																					// Promise of { canceled: false, filePaths: ['...'] }
 
 
 
+	// const data = await dialog.showMessageBox(mainWindow, {
+	// 	title: 'window title',
+	// 	type: 'question', 			// none|info|warning|error|question							// Show icon image according to type
+	// 	message: 'main heading message',
+	// 	detail: 'description for the message', 
+	// 	buttons: ['yes', 'no', 'cancel'], 													// every item create a button with that text
+	// 	defaultId: 1, 																							// Select the button, 0=buttons[0], 1=buttons[1]...
+	// 	cancelId: 2, 																								// Esc key to cencel, (default) no|cancel text
+	// 	checkboxLabel: 'Accept conditions too', 										// Add check box
+	// 	checkboxChecked: true, 																			// Enable the check box
+	// 	icon: './../images/60x60.jpg'
+	// });
+	// console.log( data ) 																					// Promise of { response: 0, checkboxChecked: false }
 
-	// mainWindow.webContents.on('did-finish-load', catchAsync( async (event) => {
-	// 	const { cookies } = session.defaultSession;
-	// 	const listsOfCookies = await cookies.get({})
-	// 	console.log( listsOfCookies )
-	// }));
+	const data = await dialog.showErrorBox('title', 'error message')
+	console.log( data ) 																						// => undefined
+
+
+	}));
+	
 
 
 
