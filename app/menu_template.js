@@ -1,6 +1,6 @@
 module.exports = [
 	{
-		label: 'Electron',
+		label: 'Custom',
 		submenu: [
 				{ label: 'menu 1' },
 				{	label: 'menu 2', 
@@ -12,17 +12,28 @@ module.exports = [
 		]	
 	},
 	{
+		role: 'editMenu' 																					// Create Edit Menu, by default
+	},
+	{
 		label: 'Action',
 		submenu: [
-			{ label: 'menu 1' },
+			{ label: 'menu 1', enabled: false },
 			{ 
 				label: 'menu 2', 
 				submenu: [
 					{
-						'label' : 'submenu 1'
+						label : 'show in console ',
+						click: () => console.log('Hello electron'),
+						accelerator: 'Alt+Shift+G'
 					}
 				] 
 			},
+			{ label: 'devTools', role: 'toggleDevTools' },
+			{ role: 'toggleFullScreen' }, 													// create Toggle Full Screen (F1) by default.
+			{ role: 'about' },
 		]	
+	},
+	{
+		role: 'appMenu'
 	}
 ];
