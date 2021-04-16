@@ -15,18 +15,7 @@ const readyHandler = catchAsync(async () => {
 	mainWindow.loadFile('app/index.html');
 	mainWindow.webContents.openDevTools();
 
-
-	ipcMain.on('hello', (e, args) => {
-		console.log( args )
-		e.sender.send('hello-response', 'I got you.')
-	});
-
-	// mainWindow.webContents.on('did-finish-load', () => {
-	// 	mainWindow.webContents.send('caught-you', 'hello client');
-	// })
-
-		ipcMain.handle('caught-you', (e, data) => console.log( data ));
-
+	console.log( process )
 
 });
 let mainWindow 
