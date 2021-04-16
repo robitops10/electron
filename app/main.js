@@ -1,4 +1,5 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, Tray, ipcMain } = require('electron');
+const path = require('path');
 
 const browserOptions = {
 	webPreferences: {
@@ -15,7 +16,7 @@ const readyHandler = catchAsync(async () => {
 	mainWindow.loadFile('app/index.html');
 	mainWindow.webContents.openDevTools();
 
-	console.log( process )
+
 
 });
 let mainWindow 
